@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#211128" />
+  <title>1 Şubat'tan 1 Haziran'a | 4. Ayımız</title>
+  <meta name="description" content="Levent'ten Zeynep'e, 4. aya özel duygusal ve animasyonlu bir sayfa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <audio id="bgMusic" src="assets/music.mp3" loop preload="auto"></audio>
+
+  <div class="noise"></div>
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+  <div class="stars" id="stars"></div>
+  <div class="petals" id="petals"></div>
+  <canvas id="heartCanvas" aria-hidden="true"></canvas>
+
+  <main>
+    <section id="lockScreen" class="lock-screen">
+      <div class="lock-card reveal-in">
+        <div class="tiny-label">1 Şubat → 1 Haziran</div>
+        <h1>4. Ayımıza Giriş</h1>
+        <p class="lock-copy">Bu sayfa sadece Zeynep için. İçinde bir şarkı, çokça kalp çarpıntısı ve Levent'in saklayamadığı bütün iyi ki'leri var.</p>
+        <div class="password-row">
+          <input id="passwordInput" type="password" inputmode="numeric" placeholder="Şifre" aria-label="Şifre" maxlength="12" />
+          <button id="unlockBtn" type="button">Kalbimi Aç</button>
+        </div>
+        <p id="lockError" class="lock-error" role="alert"></p>
+        <p class="hint birthday-hint">İpucu: Bu şifre, kalbimin ezberlediği en güzel günlerden biri. <b>Senin doğum günün</b>; gün, ay ve yıl yan yana, boşluksuz. 🎂</p>
+      </div>
+    </section>
+
+    <section id="site" class="site hidden" aria-live="polite">
+      <nav class="topbar glass">
+        <a href="#hero" class="brand">L ❤ Z</a>
+        <div class="nav-links">
+          <a href="#today">Sayaç</a>
+          <a href="#months">Aylarımız</a>
+          <a href="#specials">Özel Alanlarımız</a>
+          <a href="#letter">Mektup</a>
+        </div>
+        <button id="musicToggle" class="music-btn" type="button" aria-label="Müziği aç veya kapat">♪</button>
+      </nav>
+
+      <section id="hero" class="hero section">
+        <div class="hero-inner">
+          <p class="eyebrow">Zeynep'e</p>
+          <h2 class="hero-title"><span>4 ay değil,</span><br><span class="gradient-text">içimde büyüyen bir “iyi ki”</span></h2>
+          <p class="hero-subtitle">1 Şubat'ta başlayan hikâyemiz, 1 Haziran'da benim için sadece bir tarih değil; sana daha çok bağlandığımı, daha çok inandığımı ve seni hayatımda çok özel bir yere koyduğumu anlatan gün.</p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#today">Hikâyemize Başla</a>
+            <button class="ghost-link" id="confettiBtn" type="button">Kalp yağdır</button>
+          </div>
+        </div>
+        <div class="orbit" aria-hidden="true">
+          <div class="moon">Z</div>
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+          <div class="mini-heart h1">❤</div>
+          <div class="mini-heart h2">❤</div>
+          <div class="mini-heart h3">❤</div>
+        </div>
+        <div class="scroll-indicator">aşağı kaydır</div>
+      </section>
+
+      <section id="today" class="section today">
+        <div class="section-title reveal">
+          <p class="eyebrow">1 Haziran 2026</p>
+          <h2>Bugün bizim 4. ayımız.</h2>
+          <p>Bu sayfanın merkezinde sadece Mayıs yok; Şubat'taki ilk mektuplar, Mart'taki içtenlik, Nisan'daki güven ve Mayıs'taki “iyi ki hayatımdasın” duygusu var.</p>
+        </div>
+
+        <div class="dashboard reveal glass">
+          <div class="dashboard-head">
+            <span class="spark">✦</span>
+            <div>
+              <p class="eyebrow">Canlı ilişki sayacı</p>
+              <h3>1 Şubat'tan beri geçen zaman</h3>
+            </div>
+          </div>
+          <div class="live-counter" aria-label="1 Şubat 2026'dan beri geçen süre">
+            <div class="time-box"><strong id="daysTogether">0</strong><span>gün</span></div>
+            <div class="time-box"><strong id="hoursTogether">0</strong><span>saat</span></div>
+            <div class="time-box"><strong id="minutesTogether">0</strong><span>dakika</span></div>
+            <div class="time-box"><strong id="secondsTogether">0</strong><span>saniye</span></div>
+          </div>
+          <p class="counter-note">1 Haziran 2026'da bu hikâye tam <b>120 günü</b>, yani <b>2.880 saati</b> geride bırakmış oluyor.</p>
+        </div>
+
+        <div class="counter-grid reveal">
+          <div class="counter-card glass">
+            <strong>1</strong>
+            <span>Şubat</span>
+            <small>hikâyenin ilk günü</small>
+          </div>
+          <div class="counter-card glass pulse-card">
+            <strong>4</strong>
+            <span>Ay</span>
+            <small>kalbimde büyüyen bağ</small>
+          </div>
+          <div class="counter-card glass">
+            <strong>120</strong>
+            <span>Gün</span>
+            <small>1 Şubat'tan 1 Haziran'a</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="section birthday-section">
+        <div class="birthday-card glass reveal">
+          <div class="birthday-icon">🎂</div>
+          <div>
+            <p class="eyebrow">Şifrenin anlamı</p>
+            <h2>Kapının anahtarı senin doğduğun gün.</h2>
+            <p>Bu siteye giriş şifresini rastgele seçmedim. Çünkü bazı tarihler sadece takvimde durmaz; insanın kalbinde küçük bir ışık gibi yanar. Senin doğduğun gün de benim için artık öyle: bu sayfanın kapısını açan, seni hatırlatan en özel ipucu.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="months" class="section timeline-section">
+        <div class="section-title reveal">
+          <p class="eyebrow">Ay ay biz</p>
+          <h2>Şubat'tan Mayıs'a sadece tarih geçmedi; biz büyüdük.</h2>
+        </div>
+        <div class="month-grid">
+          <article class="month-card glass reveal">
+            <span class="month-tag">Şubat</span>
+            <h3>İlk mektuplar, ilk uzun cümleler</h3>
+            <p>“Mektup gibi uzun uzun yazasım geliyor” dediğim yerden, “senin spor ekranın ben olayım” dediğim o tatlı samimiyete geldik. Hemşire olduğunu öğrendiğim, 24 saatlik nöbetlerini konuştuğumuz, birbirimizin dünyasına ilk kez gerçekten baktığımız ay.</p>
+          </article>
+          <article class="month-card glass reveal">
+            <span class="month-tag">Mart</span>
+            <h3>İçtenliğin ve güvenin ayı</h3>
+            <p>Birbirimize baskı olmadan, duyguların saflığını koruyarak yaklaşmayı öğrendik. Uçak korkularından tren yolculuklarına, ev konuşmalarından “iyi ki varsın” cümlelerine kadar küçük küçük güven biriktirdik.</p>
+          </article>
+          <article class="month-card glass reveal">
+            <span class="month-tag">Nisan</span>
+            <h3>Aşkın adı daha netleşti</h3>
+            <p>Yağmurun altında el ele, omzuma başını koyduğun o hissi düşününce hâlâ içim ısınıyor. “Boyfriendim” kelimesine ısındığımız, “aşkım”ın Türkçedeki en güzel hâlini yaşadığımız ay oldu.</p>
+          </article>
+          <article class="month-card glass reveal special-month">
+            <span class="month-tag">Mayıs</span>
+            <h3>“İyi ki hayatımdasın” ayı</h3>
+            <p>Minnoşum, prensesim, boyfriendim… Hepsi aynı yere çıktı: birbirimizi daha çok sahiplendik. “Kalbim yumuş yumuş oldu”, “iyi ki çıktın karşıma” ve “seni seviyorum bebeğim” cümleleri artık bu hikâyenin kalbi oldu.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="specials" class="section specials-section">
+        <div class="section-title reveal">
+          <p class="eyebrow">Özel alanlarımız</p>
+          <h2>Sadece bize ait küçük evrenler.</h2>
+        </div>
+        <div class="widget-grid">
+          <article class="widget-card glass reveal">
+            <div class="widget-icon">💌</div>
+            <h3>Mektup Köşemiz</h3>
+            <p>Uzun uzun yazma isteğim hiç bitmedi. Bu sayfa da aslında sana yazılmış en animasyonlu mektubum.</p>
+          </article>
+          <article class="widget-card glass reveal">
+            <div class="widget-icon">🏥</div>
+            <h3>Nöbet Sonrası Huzur</h3>
+            <p>24 saatlik yorgunlukların içinde bile “iyi misin?” diye birbirimize dönmemiz, bizim en gerçek sevgimiz.</p>
+          </article>
+          <article class="widget-card glass reveal">
+            <div class="widget-icon">⚽</div>
+            <h3>Spor Ekranın</h3>
+            <p>Futbol, basketbol, tenis kaosu… Haberleri ilk benden duy diye kurulan tatlı bir kanal: Levent TV.</p>
+          </article>
+          <article class="widget-card glass reveal">
+            <div class="widget-icon">✈️</div>
+            <h3>Yolculuk Hayalleri</h3>
+            <p>Uçak, tren, şehirler, yollar… Bütün korkuları ve heyecanları beraber aşacağımız günlerin küçük provası.</p>
+          </article>
+          <article class="widget-card glass reveal">
+            <div class="widget-icon">🧡</div>
+            <h3>Minnoş & Boyfriend</h3>
+            <p>Bir kelime bazen bütün günü güzelleştirir. Minnoşum, prensesim, boyfriendim… hepsi “biz” demenin farklı hâli.</p>
+          </article>
+          <article class="widget-card glass reveal">
+            <div class="widget-icon">🌧️</div>
+            <h3>Yağmur ve Omuz</h3>
+            <p>Elini tutmak, yağmura rağmen konuşmak, başını omzuma koyduğun o sıcak an… kalbimin favori sahnesi.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="memories" class="section memories">
+        <div class="section-title reveal">
+          <p class="eyebrow">Kalbimde kalan cümleler</p>
+          <h2>Biz artık cümlelerde saklıyız.</h2>
+        </div>
+        <div class="memory-grid">
+          <article class="memory-card reveal glass">
+            <span class="date-pill">Şubat</span>
+            <h3>İlk samimiyet</h3>
+            <p>“Mektup gibi uzun uzun yazasım geliyor…” Çünkü daha en baştan sana içimden geleni saklamak zor geliyordu.</p>
+          </article>
+          <article class="memory-card reveal glass">
+            <span class="date-pill">Mart</span>
+            <h3>Saflık ve güven</h3>
+            <p>“Seni seviyorum ama o kadar içten ki bu…” Bazen en güzel şey, acele etmeden güveni büyütmekti.</p>
+          </article>
+          <article class="memory-card reveal glass">
+            <span class="date-pill">Nisan</span>
+            <h3>Boyfriendim</h3>
+            <p>“Benim için çok değerli boyfriendim.” Küçük bir kelime, kocaman bir yakınlık oldu.</p>
+          </article>
+          <article class="memory-card reveal glass">
+            <span class="date-pill">Mayıs</span>
+            <h3>Kalbin yumuş yumuş olduğu an</h3>
+            <p>“Beni ağlatacaksın Levent… Seni çok seviyorum minnoşum. İyi ki çıktın karşıma.”</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section promise">
+        <div class="promise-card glass reveal">
+          <div class="promise-heart">❤</div>
+          <p class="eyebrow">Sana sözüm</p>
+          <h2>Ben seni sadece güzel olduğun için değil, bana aşkın ne demek olduğunu hissettirdiğin için seviyorum.</h2>
+          <p>Senin kişiliğine, güzelliğine, özverine, beni anlayışına ve sahiplenişine vuruldum. İçimde bunu silebilecek hiçbir şey yok.</p>
+        </div>
+      </section>
+
+      <section id="letter" class="section letter-section">
+        <div class="letter-envelope reveal">
+          <div class="envelope-top"></div>
+          <div class="letter-paper">
+            <p class="eyebrow">Levent'ten Zeynep'e</p>
+            <h2>4. ay mektubum</h2>
+            <p>Zeynep,</p>
+            <p>Bu siteyi sadece 4. ayımız olduğu için hazırlamadım. Sana bakınca, senden bir mesaj görünce, sesini düşününce içimde oluşan o huzuru bir yere sığdırmak istedim.</p>
+            <p>Şubat'ta uzun uzun yazmak istiyordum; Mart'ta seni incitmeden, aceleye getirmeden güvenimizi büyütmek istedim; Nisan'da elini tutmanın ve yanında olmanın ne kadar güzel olduğunu daha iyi anladım; Mayıs'ta ise içimdeki cümleler tek bir yere çıktı: iyi ki hayatımdasın.</p>
+            <p>Benim için sen; kalbimi yumuşatan, günümü güzelleştiren, geleceği daha sıcak gösteren kişisin. Bazen bir “minnoşum”, bazen bir “boyfriendim”, bazen de sadece iyi olup olmadığımı merak eden hâlinle bana aşkın en güzel tarafını hissettiriyorsun.</p>
+            <p>Bugün 1 Haziran. 4 ayın sonunda sana tek bir şeyi en içten hâlimle söylemek istiyorum: seni seviyorum bebeğim. İyi ki hayatımdasın. İyi ki çıktın karşıma. İyi ki biz.</p>
+            <p class="signature">— Levent</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section final-section">
+        <div class="final-card glass reveal">
+          <p class="eyebrow">Son cümle</p>
+          <h2 id="typewriter"></h2>
+          <button id="finalBtn" class="primary-link final-button" type="button">Bir kez daha söyle</button>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
